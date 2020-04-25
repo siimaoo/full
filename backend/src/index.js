@@ -6,8 +6,6 @@ const app = express()
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 
-require('./app/controllers/index')(app)
-
 app.use((req, res, next) => {
     res.set({
         'Access-Control-Allow-Origin': '*',
@@ -16,4 +14,8 @@ app.use((req, res, next) => {
     })
     next();
 });
+
+require('./app/controllers/index')(app)
+
+
 app.listen(3333)
